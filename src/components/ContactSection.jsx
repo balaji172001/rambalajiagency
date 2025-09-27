@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 
+const OWNER_WHATSAPP = '+916374549935';
+
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    service: '',
     message: ''
   });
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -18,14 +20,27 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for your inquiry! We will contact you soon with your 50% discount offer.');
+
+    // Prepare WhatsApp message
+    const message = `New 50% Discount Inquiry:%0AName: ${formData.name}%0APhone: ${formData.phone}%0AEmail: ${formData.email}%0AMessage: ${formData.message}`;
+    const whatsappUrl = `https://wa.me/${OWNER_WHATSAPP.replace('+', '')}?text=${message}`;
+
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+
+    // Show snackbar
+    setShowSnackbar(true);
+
+    // Reset form
     setFormData({
       name: '',
       phone: '',
       email: '',
-      service: '',
       message: ''
     });
+
+    // Hide snackbar after 3 seconds
+    setTimeout(() => setShowSnackbar(false), 3000);
   };
 
   return (
@@ -44,7 +59,6 @@ const ContactSection = () => {
                 <p>P Ramachandrapuram (PO)-626 137</p>
                 <p>Sriviliputtur (TK)</p>
               </div>
-              
               <div className="info-card">
                 <div className="info-icon">📞</div>
                 <h3>Call Us Now</h3>
@@ -52,22 +66,19 @@ const ContactSection = () => {
                 <p>+91 87654 32109</p>
                 <p className="timing">Mon - Sat: 9 AM - 8 PM</p>
               </div>
-              
               <div className="info-card">
                 <div className="info-icon">✉️</div>
                 <h3>Email Us</h3>
-                <p>info@srirambalaji-agency.com</p>
+                <p>srirambalajiagency@gmail.com</p>
                 <p>support@srirambalaji-agency.com</p>
               </div>
             </div>
           </div>
-          
           <div className="contact-form-container">
             <div className="form-header">
               <h3>🎊 Book Your Service with 50% OFF! 🎊</h3>
               <p>Fill the form below to claim your discount</p>
             </div>
-            
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <input
@@ -79,7 +90,6 @@ const ContactSection = () => {
                   required
                 />
               </div>
-              
               <div className="form-group">
                 <input
                   type="tel"
@@ -90,7 +100,6 @@ const ContactSection = () => {
                   required
                 />
               </div>
-              
               <div className="form-group">
                 <input
                   type="email"
@@ -100,24 +109,6 @@ const ContactSection = () => {
                   onChange={handleChange}
                 />
               </div>
-              
-              <div className="form-group">
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Select Service *</option>
-                  <option value="business-consulting">Business Consulting</option>
-                  <option value="market-analysis">Market Analysis</option>
-                  <option value="digital-marketing">Digital Marketing</option>
-                  <option value="growth-strategy">Growth Strategy</option>
-                  <option value="corporate-solutions">Corporate Solutions</option>
-                  <option value="innovation-consulting">Innovation Consulting</option>
-                </select>
-              </div>
-              
               <div className="form-group">
                 <textarea
                   name="message"
@@ -127,7 +118,6 @@ const ContactSection = () => {
                   rows="4"
                 ></textarea>
               </div>
-              
               <button type="submit" className="submit-btn">
                 🎉 Claim 50% Discount Now! 🎉
               </button>
@@ -135,6 +125,12 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
+      {showSnackbar && (
+        <div className="snackbar-success">
+          Details sent to owner via WhatsApp!
+        </div>
+      )}
+
     </section>
   );
 };

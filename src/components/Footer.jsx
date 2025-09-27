@@ -33,7 +33,7 @@ const Footer = () => {
                 <p>P Ramachandrapuram (PO)-626 137</p>
                 <p>Sriviliputtur (TK)</p>
                 <p>📞 +91 98765 43210</p>
-                <p>✉️ info@srirambalaji-agency.com</p>
+                <p>✉️ srirambalajiagency@gmail.com</p>
               </div>
             </div>
           </div>
