@@ -8,7 +8,7 @@ const Services = () => {
       <div className="page-header">
         <div className="container">
           <h1>🌟 Our Premium Services 🌟</h1>
-          <p>Professional solutions for your business needs</p>
+          <p>Celebrate this Diwali with bright offers and sparkling solutions for your business!</p>
           <div className="discount-banner-small">
             <span>🎉 All services at 50% discount! 🎉</span>
           </div>
@@ -35,11 +35,6 @@ const Services = () => {
               <div className="detail-icon">🎯</div>
               <h3>Targeted Approach</h3>
               <p>Customized solutions for your specific needs</p>
-            </div>
-            <div className="detail-card">
-              <div className="detail-icon">🏆</div>
-              <h3>Award Winning</h3>
-              <p>Recognized excellence in service delivery</p>
             </div>
           </div>
         </div>

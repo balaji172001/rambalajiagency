@@ -1021,7 +1021,112 @@ body {
 .method-icon {
   font-size: 1.5rem;
 }
+/* ...existing code... */
 
+.services-grid-section {
+  padding: 60px 0;
+  background: #fffbe7;
+}
+
+.services-diwali-container {
+  text-align: center;
+}
+
+.diwali-title {
+  font-size: 38px;
+  color: #ff6b6b;
+  margin-bottom: 18px;
+}
+
+.diwali-subtitle {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.diwali-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.diwali-card {
+  border-radius: 30px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 350px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  background: #fff;
+}
+
+.diwali-card-lamp {
+  background: linear-gradient(135deg, #ffe082 0%, #ff6f00 100%);
+  box-shadow: 0 8px 32px rgba(255, 111, 0, 0.18);
+}
+
+.diwali-card-firework {
+  background: linear-gradient(135deg, #ffd6e0 0%, #ff6b6b 100%);
+  box-shadow: 0 8px 32px rgba(255, 107, 107, 0.18);
+}
+
+.diwali-emoji {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.lamp-flicker {
+  animation: flicker 2s infinite alternate;
+}
+
+.firework-animate {
+  animation: firework 1.5s infinite alternate;
+}
+
+.diwali-card-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.lamp-title {
+  color: #ff6f00;
+}
+
+.firework-title {
+  color: #d7263d;
+}
+
+.diwali-card-text {
+  font-size: 18px;
+  color: #6d4c41;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; filter: brightness(1.1); }
+  50% { opacity: 0.7; filter: brightness(1.4); }
+  100% { opacity: 1; filter: brightness(1.1); }
+}
+
+@keyframes firework {
+  0% { transform: scale(1) rotate(-5deg);}
+  50% { transform: scale(1.15) rotate(5deg);}
+  100% { transform: scale(1) rotate(-5deg);}
+}
+
+@media (max-width: 700px) {
+  .diwali-flex {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .diwali-title {
+    font-size: 26px;
+  }
+}
+
+/* ...existing code... */
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-menu {
@@ -1170,6 +1275,15 @@ body {
 
   .location-card {
     padding: 30px 20px;
+  }
+  .nav-logo h2{
+    font-size: 1rem;
+  }
+  .discount-text {
+        font-size: 0.8rem;
+  }
+  .hero-container{
+    padding: 20px 20px;
   }
 }
 

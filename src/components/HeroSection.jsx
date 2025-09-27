@@ -1,31 +1,48 @@
 import React, { useState, useEffect } from 'react';
+const PHONE_NUMBER = '+919876543210';
 
+// Set your offer end date here (YYYY-MM-DDTHH:MM:SS format)
+// Diwali 2025 is on 20 October 2025
+const OFFER_END_DATE = '2025-10-20T23:59:59';
 const HeroSection = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 15,
-    hours: 8,
-    minutes: 45,
-    seconds: 30
-  });
+  const calculateTimeLeft = () => {
+    const difference = +new Date(OFFER_END_DATE) - +new Date();
+    let timeLeft = {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0
+    };
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      };
+    }
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        } else if (prev.days > 0) {
-          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        }
-        return prev;
-      });
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
-
     return () => clearInterval(timer);
   }, []);
+
+  const isMobile = () =>
+    /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+
+  const handleCallClick = () => {
+    if (isMobile()) {
+      window.location.href = `tel:${PHONE_NUMBER}`;
+    } else {
+      window.open(`https://web.whatsapp.com/send?phone=${PHONE_NUMBER}`, '_blank');
+    }
+  };
 
   return (
     <section className="hero">
@@ -42,19 +59,12 @@ const HeroSection = () => {
       
       <div className="hero-container">
         <div className="hero-content">
-          <div className="discount-badge">
-            <span className="discount-percent">50%</span>
-            <span className="discount-text">OFF</span>
-          </div>
-          
           <h1 className="hero-title">
             Welcome to <span className="brand-name">Sri rambalaji Agency</span>
           </h1>
-          
           <p className="hero-subtitle">
             Premium Business Solutions & Services
           </p>
-          
           <div className="offer-box">
             <h3>🎉 MEGA DISCOUNT OFFER 🎉</h3>
             <p>Get 50% OFF on all our premium services!</p>
@@ -77,22 +87,19 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-          
           <div className="hero-buttons">
             <button className="btn-primary pulse">
               🛒 Avail Offer Now
             </button>
-            <button className="btn-secondary">
+            <button className="btn-secondary" onClick={handleCallClick}>
               📞 Call Now
             </button>
           </div>
-          
           <div className="contact-info">
             <p>📍 329-H/1, Sriviliputtur to Alangulam Road, Sri Venkateshwara Nagar</p>
             <p>Pilliyarkulam (Post). P Ramachandrapuram (PO)-626 137 Sriviliputtur (TK)</p>
           </div>
         </div>
-        
         <div className="hero-image">
           <div className="celebration-box">
             <div className="celebration-icon">🎊</div>

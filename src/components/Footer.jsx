@@ -25,17 +25,6 @@ const Footer = () => {
             </div>
             
             <div className="footer-section">
-              <h4>Our Services</h4>
-              <ul>
-                <li>Business Consulting</li>
-                <li>Market Analysis</li>
-                <li>Digital Marketing</li>
-                <li>Growth Strategy</li>
-                <li>Corporate Solutions</li>
-              </ul>
-            </div>
-            
-            <div className="footer-section">
               <h4>Contact Info</h4>
               <div className="contact-details">
                 <p>📍 329-H/1, Sriviliputtur to Alangulam Road</p>

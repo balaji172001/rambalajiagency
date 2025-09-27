@@ -1,29 +1,6 @@
 import React from 'react';
 
 const About = () => {
-  const services = [
-    {
-      icon: '💼',
-      title: 'Business Consulting',
-      description: 'Strategic planning and operational excellence to drive your business forward.'
-    },
-    {
-      icon: '📊',
-      title: 'Market Analysis',
-      description: 'Comprehensive market research and competitive analysis for informed decisions.'
-    },
-    {
-      icon: '🎯',
-      title: 'Digital Strategy',
-      description: 'Modern digital solutions to enhance your online presence and reach.'
-    },
-    {
-      icon: '📈',
-      title: 'Growth Solutions',
-      description: 'Scalable strategies designed to accelerate sustainable business growth.'
-    }
-  ];
-
   return (
     <section id="about" className="about">
       <div className="container">
@@ -62,19 +39,6 @@ const About = () => {
               <div className="placeholder-icon">🌟</div>
               <p>Excellence in Every Project</p>
             </div>
-          </div>
-        </div>
-
-        <div id="services" className="services">
-          <h3 className="services-title">Our Services</h3>
-          <div className="services-grid">
-            {services.map((service, index) => (
-              <div key={index} className="service-card">
-                <div className="service-icon">{service.icon}</div>
-                <h4>{service.title}</h4>
-                <p>{service.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </div>
