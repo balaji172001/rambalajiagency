@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-const PHONE_NUMBER = '+919876543210';
+const PHONE_NUMBER = '+916374549935';
 
 // Set your offer end date here (YYYY-MM-DDTHH:MM:SS format)
 // Diwali 2025 is on 20 October 2025

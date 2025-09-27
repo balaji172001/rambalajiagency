@@ -37,7 +37,7 @@ const Contact = () => {
                 </div>
                 <div className="contact-method">
                   <span className="method-icon">✉️</span>
-                  <span>info@srirambalaji-agency.com</span>
+                  <span>srirambalajiagency@gmail.com</span>
                 </div>
                 <div className="contact-method">
                   <span className="method-icon">🕒</span>

@@ -1115,7 +1115,133 @@ body {
   50% { transform: scale(1.15) rotate(5deg);}
   100% { transform: scale(1) rotate(-5deg);}
 }
+/* ...existing code... */
 
+.services-grid-section {
+  padding: 60px 0;
+  background: #fffbe7;
+}
+
+.services-diwali-container {
+  text-align: center;
+}
+
+.section-header .diwali-title {
+  font-size: 38px;
+  color: #ff6b6b;
+  margin-bottom: 18px;
+}
+
+.section-header .diwali-subtitle {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.diwali-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.diwali-card {
+  border-radius: 30px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 350px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  background: #fff;
+}
+
+.diwali-card-lamp {
+  background: linear-gradient(135deg, #ffe082 0%, #ff6f00 100%);
+  box-shadow: 0 8px 32px rgba(255, 111, 0, 0.18);
+}
+
+.diwali-card-firework {
+  background: linear-gradient(135deg, #ffd6e0 0%, #ff6b6b 100%);
+  box-shadow: 0 8px 32px rgba(255, 107, 107, 0.18);
+}
+
+.diwali-emoji {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.lamp-flicker {
+  animation: flicker 2s infinite alternate;
+}
+
+.firework-animate {
+  animation: firework 1.5s infinite alternate;
+}
+
+.diwali-card-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.lamp-title {
+  color: #ff6f00;
+}
+
+.firework-title {
+  color: #d7263d;
+}
+
+.diwali-card-text {
+  font-size: 18px;
+  color: #6d4c41;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; filter: brightness(1.1); }
+  50% { opacity: 0.7; filter: brightness(1.4); }
+  100% { opacity: 1; filter: brightness(1.1); }
+}
+
+@keyframes firework {
+  0% { transform: scale(1) rotate(-5deg);}
+  50% { transform: scale(1.15) rotate(5deg);}
+  100% { transform: scale(1) rotate(-5deg);}
+}
+
+@media (max-width: 700px) {
+  .diwali-flex {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .section-header .diwali-title {
+    font-size: 26px;
+  }
+}
+
+/* Snackbar style for ContactSection */
+.snackbar-success {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: #43a047;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  z-index: 9999;
+  animation: fadeInOut 3s;
+}
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-20px);}
+  10% { opacity: 1; transform: translateY(0);}
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-20px);}
+}
+
+/* ...existing code... */
 @media (max-width: 700px) {
   .diwali-flex {
     flex-direction: column;
@@ -1309,7 +1435,7 @@ body {
     transform: translateX(0);
   }
 }
-
+  
 @keyframes fadeInUp {
   from {
     opacity: 0;

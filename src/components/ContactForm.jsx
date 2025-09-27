@@ -110,7 +110,7 @@ const ContactForm = () => {
               <span className="info-icon">📧</span>
               <div>
                 <h4>Email</h4>
-                <p>info@srirambalaji-agency.com</p>
+                <p>srirambalajiagency@gmail.com</p>
               </div>
             </div>
             <div className="info-item">
