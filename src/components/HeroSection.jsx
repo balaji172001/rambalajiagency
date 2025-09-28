@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-const PHONE_NUMBER = '+916374549935';
 
-// Set your offer end date here (YYYY-MM-DDTHH:MM:SS format)
-// Diwali 2025 is on 20 October 2025
+const PHONE_NUMBER = '+916374549935';
 const OFFER_END_DATE = '2025-10-20T23:59:59';
+
 const HeroSection = () => {
   const calculateTimeLeft = () => {
     const difference = +new Date(OFFER_END_DATE) - +new Date();
@@ -46,16 +45,6 @@ const HeroSection = () => {
 
   return (
     <section className="hero">
-      <div className="hero-background">
-        <div className="floating-shapes">
-          <div className="shape shape-1">🎊</div>
-          <div className="shape shape-2">✨</div>
-          <div className="shape shape-3">🎉</div>
-          <div className="shape shape-4">⭐</div>
-          <div className="shape shape-5">🎈</div>
-          <div className="shape shape-6">🎁</div>
-        </div>
-      </div>
       
       <div className="hero-container">
         <div className="hero-content">
