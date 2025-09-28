@@ -1,4 +1,14 @@
+// import axios from 'axios';
 import React from 'react';
+
+
+// const getData = async () => {
+//   const res = await axios.get('https://fake-json-api.mock.beeceptor.com/users');
+//   //const data = await res.json();
+//   console.log(res.data);
+//   return res;
+// }
+// getData();
 
 const Footer = () => {
   return (
