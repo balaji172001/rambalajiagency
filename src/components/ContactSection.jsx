@@ -64,7 +64,7 @@ const ContactSection = () => {
                 <h3>Call Us Now</h3>
                 <p>+91 98765 43210</p>
                 <p>+91 87654 32109</p>
-                <p className="timing">Mon - Sat: 9 AM - 8 PM</p>
+                <p className="timing">24/7 hours</p>
               </div>
               <div className="info-card">
                 <div className="info-icon">✉️</div>

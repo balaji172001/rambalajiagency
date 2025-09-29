@@ -6,10 +6,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/mousewheel';
 
 const bannerImages = [
-  './Images/banners4.png',
-  './Images/banners2.png',
+  './Images/banners4.webp',
+  './Images/banners2.webp',
   './Images/banners1.webp',
-  './Images/banners3.png',
+  './Images/banners3.webp',
 ];
 
 const BannerSwiper = () => (
@@ -30,7 +30,7 @@ const BannerSwiper = () => (
           <img
             src={img}
             alt={`Banner ${idx + 1}`}
-            className="banner-image"
+            className="banner-image" onError={(e) => { e.target.onerror = null; e.target.src = {img}; }}
           />
         </SwiperSlide>
       ))}

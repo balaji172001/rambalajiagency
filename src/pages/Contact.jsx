@@ -20,7 +20,7 @@ const Contact = () => {
       <div className="map-section">
         <div className="container">
           <h2>🗺️ Find Us Here 🗺️</h2>
-          <div className="location-info">
+          <div className="location-info location-map-flex">
             <div className="location-card">
               <h3>📍 Our Address</h3>
               <p><strong>Sri rambalaji Agency</strong></p>
@@ -33,17 +33,29 @@ const Contact = () => {
               <div className="contact-methods">
                 <div className="contact-method">
                   <span className="method-icon">📞</span>
-                  <span>+91 98765 43210</span>
+                  <span className='method-detaails'>+91 98765 43210</span>
                 </div>
                 <div className="contact-method">
                   <span className="method-icon">✉️</span>
-                  <span>srirambalajiagency@gmail.com</span>
+                  <span className='method-detaails'>srirambalajiagency@gmail.com</span>
                 </div>
                 <div className="contact-method">
                   <span className="method-icon">🕒</span>
-                  <span>Mon - Sat: 9 AM - 8 PM</span>
+                  <span className='method-detaails'>24/7 hours</span>
                 </div>
               </div>
+            </div>
+            <div className="location-map-embed">
+              <iframe
+                title="Sri rambalaji Agency Location"
+                src="https://www.google.com/maps?q=329-H/1,+Sriviliputtur+to+Alangulam+Road,+Sriviliputtur,+Tamil+Nadu&output=embed"
+                width="100%"
+                height="300"
+                style={{ border: 0, borderRadius: '16px', minWidth: '250px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>
