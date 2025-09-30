@@ -102,44 +102,46 @@ const ProductPage = () => {
   return (
     <div className="container">
       <h2 className="product-head">Product Price List</h2>
-      <table className="product-table">
-        <thead>
-          <tr>
-            <th>S.No.</th>
-            <th>Name of the Product</th>
-            <th>Unit</th>
-            <th>Price (₹)</th>
-            <th>Add</th>
-            <th>Count</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product, idx) => (
-            <tr key={idx}>
-              <td>{product.sno}</td>
-              <td>{product.name}</td>
-              <td>{product.unit}</td>
-              <td>{product.price}</td>
-              <td>
-                <button
-                  className={`add-btn ${cart[product.sno] ? "added" : ""}`}
-                  onClick={() => handleAdd(product)}
-                  title="Add to total"
-                >
-                  {cart[product.sno] ? "✓" : "+"}
-                </button>
-              </td>
-              <td>
-                {cart[product.sno] ? (
-                  <span className="count-badge">{cart[product.sno]}</span>
-                ) : (
-                  "-"
-                )}
-              </td>
+      <div className="table-responsive">
+        <table className="product-table">
+            <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>Name of the Product</th>
+                <th>Unit</th>
+                <th>Price (₹)</th>
+                <th>Add</th>
+                <th>Count</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+            {products.map((product, idx) => (
+                <tr key={idx}>
+                <td>{product.sno}</td>
+                <td>{product.name}</td>
+                <td>{product.unit}</td>
+                <td>{product.price}</td>
+                <td>
+                    <button
+                    className={`add-btn ${cart[product.sno] ? "added" : ""}`}
+                    onClick={() => handleAdd(product)}
+                    title="Add to total"
+                    >
+                    {cart[product.sno] ? "✓" : "+"}
+                    </button>
+                </td>
+                <td>
+                    {cart[product.sno] ? (
+                    <span className="count-badge">{cart[product.sno]}</span>
+                    ) : (
+                    "-"
+                    )}
+                </td>
+                </tr>
+            ))}
+            </tbody>
+        </table>
+    </div>
       <div className="amount-rest-box">
         <div className="total-amount-box">
             <span className="total-label">Total Amount:</span>
