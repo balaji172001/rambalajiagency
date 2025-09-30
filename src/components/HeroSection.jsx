@@ -52,7 +52,7 @@ const HeroSection = () => {
             Welcome to <span className="brand-name">Sri rambalaji Agency</span>
           </h1>
           <p className="hero-subtitle">
-            Premium Business Solutions & Services
+            Premium Services
           </p>
           <div className="offer-box">
             <h3>🎉 MEGA DISCOUNT OFFER 🎉</h3>

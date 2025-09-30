@@ -158,16 +158,17 @@ body {
 /* Hero Section */
 .hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   align-items: center;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
+  width: 100%;
 }
 .hero-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding:  20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
@@ -177,8 +178,11 @@ body {
 }
 
 .hero-content {
-  color: white;
-  text-align: left;
+    color: white;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .discount-badge {
@@ -218,10 +222,7 @@ body {
 }
 
 .brand-name {
-  background: linear-gradient(45deg, #feca57, #ff9ff3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+ color: #feca57;
 }
 
 .hero-subtitle {
@@ -948,10 +949,10 @@ body {
 .location-card {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 50px;
+  padding: 50px 0;
   border-radius: 25px;
-  max-width: 600px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  width: 100%;
 }
 
 .location-card h3 {
@@ -959,12 +960,14 @@ body {
   font-weight: 700;
   margin-bottom: 25px;
   color: #feca57;
+  padding: 0 10px;
 }
 
 .location-card p {
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 8px;
+  padding: 0 10px;
 }
 
 .contact-methods {
@@ -972,6 +975,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding: 0 10px;
 }
 
 .contact-method {
@@ -982,8 +986,9 @@ body {
   padding: 15px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
+  width: 100%;
+  min-width: -webkit-fill-available;
 }
-
 .method-icon {
   font-size: 1.5rem;
 }
@@ -1223,6 +1228,32 @@ body {
     height: 7px !important;
     border-radius: 6px !important;
 }
+/* Add to your index.css */
+.location-map-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.location-map-embed {
+  flex: 1 1 400px;
+  min-width: 260px;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 900px) {
+  .location-map-flex {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .location-map-embed {
+    max-width: 100%;
+  }
+}
 @media (max-width: 700px) {
   .banner-image {
     height: 185px;
@@ -1240,6 +1271,90 @@ body {
 }
 
 /* ...existing code... */
+.product-head{
+font-size: 1.4rem;
+    color: #fff;
+    text-align: center;
+    padding: 12px 0;
+}
+    
+ .product-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+        }
+        .product-table th, .product-table td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: center;
+          color: #fff;
+        }
+        .add-btn {
+          background: #48dbfb;
+          color: #fff;
+          border: none;
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+          font-size: 1.2rem;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .add-btn.added {
+          background: #00b894;
+        }
+        .add-btn:hover {
+          background: #00b894;
+        }
+        .count-badge {
+          background: #764ba2;
+          color: #fff;
+          border-radius: 12px;
+          padding: 2px 10px;
+          font-weight: bold;
+        }
+.total-amount-box {
+    padding: 6px 24px;
+    /* background: linear-gradient(90deg, #48dbfb 0%, #764ba2 100%); */
+    color: 00;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    display: flex
+;
+    align-items: center;
+    gap: 20px;
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
+    /* max-width: 266px; */
+    background: #fff;
+  }
+        .total-label {
+          margin-right: 12px;
+        }
+        .total-value {
+          font-size: 1.5rem;
+        }
+        .reset-btn {
+          margin-left: auto;
+          background: #ff6b6b;
+          color: #fff;
+          border: none;
+          border-radius: 6px;
+          padding: 8px 18px;
+          font-size: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .reset-btn:hover {
+          background: #c0392b;
+        }
+        .amount-rest-box{
+          display: flex ;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 0 20px;
+        }
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-menu {
@@ -1263,7 +1378,9 @@ body {
   .nav-toggle {
     display: flex;
   }
-
+.contact-section{
+  padding: 40px 0;
+}
   .banner-content {
     flex-direction: column;
     gap: 10px;
@@ -1281,6 +1398,7 @@ body {
 
   .hero-title {
     font-size: 2.5rem;
+    text-align: center;
   }
 
   .countdown-timer {
@@ -1343,8 +1461,11 @@ body {
 
   .hero-title {
     font-size: 2rem;
+    text-align: center;
   }
-
+.hero-subtitle{
+    text-align: center;
+  }
   .discount-badge {
     padding: 12px 20px;
   }
@@ -1382,12 +1503,12 @@ body {
     font-size: 2rem;
   }
 
-  .section-header h2 {
+  .section-header h2 , .contact-info h2 {
     font-size: 1.8rem;
   }
 
   .location-card {
-    padding: 30px 20px;
+    padding: 30px 0px;
   }
   .nav-logo h2{
     font-size: 1rem;
@@ -1397,6 +1518,15 @@ body {
   }
   .hero-container{
     padding: 20px 20px;
+  }
+  .method-detaails{
+    font-size: 0.9rem;
+  }
+  .contact-method{
+    gap: 4px;
+  }
+  .info-card{
+    padding: 12px 30px;
   }
 }
 

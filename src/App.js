@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Services from './pages/Services';
+import ProductPage from './pages/ProductPage';
 
 function App() {
   const [currentPage, setCurrentPage] = React.useState('home');
@@ -16,6 +17,10 @@ function App() {
         return <Services />;
       case 'contact':
         return <Contact />;
+      case 'home':
+        return <Home />;
+      case 'product':
+        return <ProductPage />;
       default:
         return <Home />;
     }

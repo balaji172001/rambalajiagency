@@ -50,9 +50,13 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             >
               Contact
             </button>
-            <button className="nav-link cta-button">
-              Get 50% OFF
+             <button 
+              className={`nav-link ${currentPage === 'product' ? 'active' : ''}`}
+              onClick={() => handleNavClick('product')}
+            >
+              Product List
             </button>
+
           </div>
 
           <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
