@@ -834,7 +834,6 @@ body {
 }
 
 .image-placeholder {
-  width: 400px;
   height: 350px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 25px;
@@ -1288,6 +1287,7 @@ font-size: 1.4rem;
     width: 100%;
     overflow-x: auto;
     box-shadow: rgb(255 255 255 / 93%) 0px 2px 8px 0px;
+    margin-bottom: 80px;
 }
 .product-table {
   min-width: 600px; /* or higher if needed */
@@ -1327,7 +1327,7 @@ font-size: 1.4rem;
           font-weight: bold;
         }
 .total-amount-box {
-    padding: 6px 24px;
+    padding: 6px 0px;
     /* background: linear-gradient(90deg, #48dbfb 0%, #764ba2 100%); */
     color: 00;
     font-size: 1.1rem;
@@ -1360,12 +1360,18 @@ font-size: 1.4rem;
         .reset-btn:hover {
           background: #c0392b;
         }
-        .amount-rest-box{
-          display: flex ;
-          align-items: center;
-          justify-content: space-between;
-          padding: 10px 0 20px;
-        }
+        .amount-rest-box {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 0 20px;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-menu {
@@ -1595,4 +1601,46 @@ font-size: 1.4rem;
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+.floating-download {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+  z-index: 1000;
+  animation: bounce 1.6s infinite;
+  -webkit-animation: bounce 1.6s infinite;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-12px);
+
+}
+  60% {
+    transform: translateY(-6px);
+}
+}
+.floating-download::before {
+    content: "Price List";
+    position: absolute;
+    font-size: 1rem;
+    bottom: -35px;
+    min-width: 80px;
+    right: -15px;
+    background: #fff;
+    color: #000;
+    border-radius: 5px;
+    text-wrap-mode: nowrap;
+    padding: 5px 4px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
