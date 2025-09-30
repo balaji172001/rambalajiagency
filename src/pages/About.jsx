@@ -35,10 +35,15 @@ const About = () => {
               </ul>
               
               <div className="stats-section">
-                  <AnimatedStat start={100} end={500} duration={100} label="Happy Clients" suffix="+" />
-                  <AnimatedStat start={0} end={10} duration={1500} label="Years Experience" suffix="+" />
-                  <AnimatedStat start={90} end={99} duration={1500} label="Success Rate" suffix="%" />
-
+                  <AnimatedStat />
+                  <div className="stat-item">
+                    <h3>10+</h3>
+                    <p>Years Experience</p>
+                  </div>
+                  <div className="stat-item">
+                    <h3>99%</h3>
+                    <p>Success Rate</p>
+                  </div>
               </div>
             </div>
             
@@ -65,56 +70,8 @@ export default About;
 // AnimatedStat component for count-up animation
 // removed duplicate import
 
-// const AnimatedStat = () => {
-//   const [count, setCount] = useState(100);
-//   const [hasAnimated, setHasAnimated] = useState(false);
-//   const ref = useRef();
-
-//   useEffect(() => {
-//     const observer = new window.IntersectionObserver(
-//       ([entry]) => {
-//         if (entry.isIntersecting && !hasAnimated) {
-//           setHasAnimated(true);
-//         }
-//       },
-//       { threshold: 0.5 }
-//     );
-//     if (ref.current) observer.observe(ref.current);
-//     return () => observer.disconnect();
-//   }, [hasAnimated]);
-
-//   useEffect(() => {
-//     if (!hasAnimated) return;
-//     let start = 100;
-//     const end = 500;
-//     const duration = 2000;
-//     const stepTime = Math.max(Math.floor(duration / (end - start)), 10);
-//     let current = start;
-//     const timer = setInterval(() => {
-//       current += 5;
-//       if (current >= end) {
-//         current = end;
-//         clearInterval(timer);
-//       }
-//       setCount(current);
-//     }, stepTime);
-//     return () => clearInterval(timer);
-//   }, [hasAnimated]);
-
-//   return (
-//     <div className="stat-item" ref={ref}>
-//       <h3>{count}+</h3>
-//       <p>Happy Clients</p>
-//     </div>
-//   );
-
-// };
-
-
-
-
-const AnimatedStat = ({ start = 0, end, duration = 2000, label, suffix = "" }) => {
-  const [count, setCount] = useState(start);
+const AnimatedStat = () => {
+  const [count, setCount] = useState(100);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef();
 
@@ -133,29 +90,26 @@ const AnimatedStat = ({ start = 0, end, duration = 2000, label, suffix = "" }) =
 
   useEffect(() => {
     if (!hasAnimated) return;
-
+    let start = 100;
+    const end = 500;
+    const duration = 1200;
+    const stepTime = Math.max(Math.floor(duration / (end - start)), 10);
     let current = start;
-    const range = end - start;
-    const stepTime = Math.max(Math.floor(duration / range), 10);
-
     const timer = setInterval(() => {
-      current += 1;
+      current += 5;
       if (current >= end) {
         current = end;
         clearInterval(timer);
       }
       setCount(current);
     }, stepTime);
-
     return () => clearInterval(timer);
-  }, [hasAnimated, start, end, duration]);
+  }, [hasAnimated]);
 
   return (
     <div className="stat-item" ref={ref}>
-      <h3>{count}{suffix}</h3>
-      <p>{label}</p>
+      <h3>{count}+</h3>
+      <p>Happy Clients</p>
     </div>
   );
 };
-
-

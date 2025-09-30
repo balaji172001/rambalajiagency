@@ -5,6 +5,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Services from './pages/Services';
 import ProductPage from './pages/ProductPage';
+import FloatingDownload from "./components/FloatingDownload";
 
 function App() {
   const [currentPage, setCurrentPage] = React.useState('home');
@@ -30,6 +31,8 @@ function App() {
     <div className="App">
       <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
       {renderPage()}
+
+      <FloatingDownload />
     </div>
   );
 }
