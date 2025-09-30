@@ -31,8 +31,7 @@ function App() {
     <div className="App">
       <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
       {renderPage()}
-
-      <FloatingDownload />
+      {currentPage === 'product' ? "" : <FloatingDownload />}
     </div>
   );
 }
