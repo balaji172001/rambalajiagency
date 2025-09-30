@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 
 const Navbar = ({ currentPage, setCurrentPage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleNavClick = (page) => {
+    window.scrollTo(0, 0);
     setCurrentPage(page);
     setIsMenuOpen(false);
   };
-
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isMenuOpen]);
   return (
     <>
       {/* Top Discount Banner */}

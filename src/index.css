@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -763,10 +764,12 @@ body {
 }
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  display: flex;
+    gap: 60px;
   align-items: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .about-text h2 {
@@ -952,7 +955,7 @@ body {
   padding: 50px 0;
   border-radius: 25px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-  width: 100%;
+  /* width: 100%; */
 }
 
 .location-card h3 {
@@ -1234,7 +1237,7 @@ body {
   flex-wrap: wrap;
   gap: 32px;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .location-map-embed {
@@ -1253,10 +1256,11 @@ body {
   .location-map-embed {
     max-width: 100%;
   }
-}
-@media (max-width: 700px) {
-  .banner-image {
-    height: 185px;
+  .nav-menu{
+    gap: 10px;
+  }
+  .nav-link{
+    padding: 7px 10px;
   }
 }
 /* ...existing code... */
@@ -1264,6 +1268,9 @@ body {
   .diwali-flex {
     flex-direction: column;
     gap: 24px;
+  }
+  .banner-image {
+    height: 185px;
   }
   .diwali-title {
     font-size: 26px;
@@ -1277,11 +1284,17 @@ font-size: 1.4rem;
     text-align: center;
     padding: 12px 0;
 }
-    
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    box-shadow: rgb(255 255 255 / 93%) 0px 2px 8px 0px;
+}
+.product-table {
+  min-width: 600px; /* or higher if needed */
+}
  .product-table {
           width: 100%;
           border-collapse: collapse;
-          margin-top: 20px;
         }
         .product-table th, .product-table td {
           border: 1px solid #ddd;
@@ -1323,9 +1336,7 @@ font-size: 1.4rem;
     display: flex
 ;
     align-items: center;
-    gap: 20px;
-    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
-    /* max-width: 266px; */
+    gap: 0px;
     background: #fff;
   }
         .total-label {
@@ -1360,7 +1371,7 @@ font-size: 1.4rem;
   .nav-menu {
     position: fixed;
     left: -100%;
-    top: 120px;
+    top: 100px;
     flex-direction: column;
     background: white;
     width: 100%;
@@ -1428,7 +1439,6 @@ font-size: 1.4rem;
   }
 
   .about-grid {
-    grid-template-columns: 1fr;
     gap: 40px;
     text-align: center;
   }
@@ -1458,7 +1468,13 @@ font-size: 1.4rem;
   .container {
     padding: 0 15px;
   }
-
+  .nav-menu{
+    top: 80px;
+  }
+  .stats-section{
+    flex-direction: column;
+    grid-area: 0;
+  }
   .hero-title {
     font-size: 2rem;
     text-align: center;
