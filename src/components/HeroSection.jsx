@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const PHONE_NUMBER = '+916374549935';
 const OFFER_END_DATE = '2025-10-20T23:59:59';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   const calculateTimeLeft = () => {
     const difference = +new Date(OFFER_END_DATE) - +new Date();
     let timeLeft = {
@@ -77,7 +79,7 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="hero-buttons">
-            <button className="btn-primary pulse">
+            <button className="btn-primary pulse" onClick={() => navigate("/products")}>
               🛒 Avail Offer Now
             </button>
             <button className="btn-secondary" onClick={handleCallClick}>

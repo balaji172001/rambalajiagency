@@ -103,7 +103,7 @@ const ContactForm = () => {
               <span className="info-icon">📞</span>
               <div>
                 <h4>Phone</h4>
-                <p>+91 98765 43210</p>
+                <p>+91 9940767763</p>
               </div>
             </div>
             <div className="info-item">
@@ -163,7 +163,7 @@ const ContactForm = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   className={errors.phone ? 'error' : ''}
-                  placeholder="+91 98765 43210"
+                  placeholder="+91 9940767763"
                 />
                 {errors.phone && <span className="error-message">{errors.phone}</span>}
               </div>

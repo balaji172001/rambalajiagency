@@ -1,26 +1,29 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-const Navbar = ({ currentPage, setCurrentPage }) => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleNavClick = (page) => {
-    window.scrollTo(0, 0);
-    setCurrentPage(page);
-    setIsMenuOpen(false);
-  };
+  const { pathname } = useLocation();
+ useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top on route change
+  }, [pathname]);
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
   }, [isMenuOpen]);
+
   return (
     <>
       {/* Top Discount Banner */}
       <div className="top-banner">
         <div className="banner-content">
-          <span className="discount-text">🎉 SPECIAL OFFER - 50% OFF ON ALL SERVICES! 🎉</span>
+          <span className="discount-text">
+            🎉 SPECIAL OFFER - 50% OFF ON ALL SERVICES! 🎉
+          </span>
           <span className="limited-time">Limited Time Only!</span>
         </div>
       </div>
@@ -31,43 +34,64 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             <h2>Sri rambalaji Agency</h2>
             <span className="tagline">Your Trusted Partner</span>
           </div>
-          
-          <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-            <button 
-              className={`nav-link ${currentPage === 'home' ? 'active' : ''}`}
-              onClick={() => handleNavClick('home')}
+
+          <div className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active" : ""}`
+              }
+              onClick={() => setIsMenuOpen(false)}
             >
               Home
-            </button>
-            <button 
-              className={`nav-link ${currentPage === 'product' ? 'active' : ''}`}
-              onClick={() => handleNavClick('product')}
+            </NavLink>
+
+            <NavLink
+              to="/products"
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active" : ""}`
+              }
+              onClick={() => setIsMenuOpen(false)}
             >
               Product List
-            </button>
-            <button 
-              className={`nav-link ${currentPage === 'about' ? 'active' : ''}`}
-              onClick={() => handleNavClick('about')}
+            </NavLink>
+
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active" : ""}`
+              }
+              onClick={() => setIsMenuOpen(false)}
             >
               About Us
-            </button>
-            <button 
-              className={`nav-link ${currentPage === 'services' ? 'active' : ''}`}
-              onClick={() => handleNavClick('services')}
+            </NavLink>
+
+            <NavLink
+              to="/services"
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active" : ""}`
+              }
+              onClick={() => setIsMenuOpen(false)}
             >
               Services
-            </button>
-            <button 
-              className={`nav-link ${currentPage === 'contact' ? 'active' : ''}`}
-              onClick={() => handleNavClick('contact')}
+            </NavLink>
+
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active" : ""}`
+              }
+              onClick={() => setIsMenuOpen(false)}
             >
               Contact
-            </button>
-             
-
+            </NavLink>
           </div>
 
-          <div className="nav-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {/* Mobile Menu Toggle */}
+          <div
+            className="nav-toggle"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
             <span className="bar"></span>
             <span className="bar"></span>
             <span className="bar"></span>

@@ -1183,15 +1183,7 @@ body {
   100% { transform: scale(1) rotate(-5deg);}
 }
 
-@media (max-width: 700px) {
-  .diwali-flex {
-    flex-direction: column;
-    gap: 24px;
-  }
-  .section-header .diwali-title {
-    font-size: 26px;
-  }
-}
+
 
 /* Snackbar style for ContactSection */
 .snackbar-success {
@@ -1247,34 +1239,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 900px) {
-  .location-map-flex {
-    flex-direction: column;
-    gap: 24px;
-  }
-  .location-map-embed {
-    max-width: 100%;
-  }
-  .nav-menu{
-    gap: 10px;
-  }
-  .nav-link{
-    padding: 7px 10px;
-  }
-}
-/* ...existing code... */
-@media (max-width: 700px) {
-  .diwali-flex {
-    flex-direction: column;
-    gap: 24px;
-  }
-  .banner-image {
-    height: 185px;
-  }
-  .diwali-title {
-    font-size: 26px;
-  }
-}
+
 
 /* ...existing code... */
 .product-head{
@@ -1287,7 +1252,7 @@ font-size: 1.4rem;
     width: 100%;
     overflow-x: auto;
     box-shadow: rgb(255 255 255 / 93%) 0px 2px 8px 0px;
-    margin-bottom: 80px;
+    margin-bottom: 115px;
 }
 .product-table {
   min-width: 600px; /* or higher if needed */
@@ -1505,6 +1470,8 @@ font-size: 1.4rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  width: 100%;
+  color: #333;
 }
 
 .confirm-btn {
@@ -1514,6 +1481,7 @@ font-size: 1.4rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  width: 100%;
 }
 .confirm-btn.disable-cls {
   opacity: 0.6;
@@ -1595,7 +1563,139 @@ font-size: 1.4rem;
   font-weight: bold;
 }
 
+
+/* Additional Animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+  
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+.floating-product-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 10px;
+    width: 100%;
+    z-index: 9999;
+    text-align: center;
+    max-width: 170px;
+}
+
+.floating-btn {
+  display: block;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+  animation: bounce 1.5s infinite;
+      font-size: 0.8rem;
+
+}
+
+.floating-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.table-responsive::-webkit-scrollbar {
+    width: 10px;
+    height: 6px;
+}
+
+/* Track */
+.table-responsive::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 32px;
+}
+ 
+/* Handle */
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 32px;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+}
+
+/* Handle on hover */
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #fff; 
+}
 /* Responsive Design */
+@media (max-width: 900px) {
+  .location-map-flex {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .location-map-embed {
+    max-width: 100%;
+  }
+  .nav-menu{
+    gap: 10px;
+  }
+  .nav-link{
+    padding: 7px 10px;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-menu {
     position: fixed;
@@ -1692,7 +1792,21 @@ font-size: 1.4rem;
     padding: 30px 20px;
   }
 }
-
+@media (max-width: 700px) {
+  .diwali-flex {
+    flex-direction: column;
+    gap: 24px;
+  }
+    .section-header .diwali-title {
+    font-size: 26px;
+  }
+  .banner-image {
+    height: 185px;
+  }
+  .diwali-title {
+    font-size: 26px;
+  }
+}
 @media (max-width: 480px) {
   .container {
     padding: 0 15px;
@@ -1747,6 +1861,9 @@ font-size: 1.4rem;
   .page-header h1 {
     font-size: 2rem;
   }
+  .page-header{
+    padding: 30px 0 40px;
+  }
 
   .section-header h2 , .contact-info h2 {
     font-size: 1.8rem;
@@ -1774,7 +1891,7 @@ font-size: 1.4rem;
     padding: 12px 30px;
   }
  .popup {
-    padding: 20px 10px 50px;
+    padding: 20px 10px 70px;
     border-top-left-radius:6px;
     border-top-right-radius: 6px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -1789,7 +1906,7 @@ font-size: 1.4rem;
     background: #fff;
     width: 100%;
     justify-content: space-around;
-    padding: 10px 0 10px;
+    padding: 10px 10px 10px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 .preview-table td , .preview-table th{
@@ -1798,55 +1915,4 @@ font-size: 1.4rem;
   .price-summary p {
     font-size: 0.9rem;
   }
-}
-
-/* Additional Animations */
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-  
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-slide-left {
-  animation: slideInLeft 0.8s ease-out;
-}
-
-.animate-slide-right {
-  animation: slideInRight 0.8s ease-out;
-}
-
-.animate-fade-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
 }

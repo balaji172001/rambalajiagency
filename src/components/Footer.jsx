@@ -42,7 +42,7 @@ const Footer = () => {
                 <p>Pilliyarkulam (Post)</p>
                 <p>P Ramachandrapuram (PO)-626 137</p>
                 <p>Sriviliputtur (TK)</p>
-                <p>📞 +91 98765 43210</p>
+                <p>📞 +91 9940767763</p>
                 <p>✉️ srirambalajiagency@gmail.com</p>
               </div>
             </div>
