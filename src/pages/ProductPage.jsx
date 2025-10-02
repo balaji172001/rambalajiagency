@@ -81,6 +81,8 @@ const products = [
   { sno: 74, name: "30 Shot", unit: "1 Box", price: 1000 },
   { sno: 75, name: "60 Shot", unit: "1 Box", price: 2000 },
   { sno: 76, name: "120 Shot", unit: "1 Box", price: 4000 },
+  { sno: 77, name: "Gun", unit: "1 Box", price: 450 },
+  { sno: 78, name: "Tim Tim", unit: "1 Box", price: 550 }
 ];
 
 const shopNumber = "916374549935";
@@ -164,22 +166,27 @@ const confirmOrder = () => {
     return sum + offerPrice * qty;
   }, 0);
 
-  // ✅ Correct usage in React
   autoTable(doc, {
     head: [["S.No", "Item Name", "Qty", "Price", "Offer Price"]],
     body: tableData,
     startY: 25,
-    styles: { fontSize: 12 },
-    headStyles: { fillColor: [230, 230, 250] },
-    alternateRowStyles: { fillColor: [245, 245, 245] },
   });
 
   doc.setFontSize(13);
   doc.text(`Total Amount (After Offer): Rs.${totalOfferAmount}`, 10, doc.lastAutoTable.finalY + 10);
 
-  doc.save("OrderDetails.pdf");
+  // ✅ Instead of doc.save(), use Blob for mobile compatibility
+  const pdfBlob = doc.output("blob");
+  const url = URL.createObjectURL(pdfBlob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "OrderDetails.pdf";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 
-  // WhatsApp message
+  // WhatsApp sharing
   let message = "Order Details (Offer Applied):\n\n";
   selectedProducts.forEach((p, i) => {
     const qty = cart[p.sno] || 1;
@@ -196,6 +203,7 @@ const confirmOrder = () => {
 
   setShowPopup(false);
 };
+
 
 useEffect(() => {
   if (showPopup) {

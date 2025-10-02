@@ -33,7 +33,7 @@ const Contact = () => {
               <div className="contact-methods">
                 <div className="contact-method">
                   <span className="method-icon">📞</span>
-                  <span className='method-detaails'>+91 98765 43210</span>
+                  <span className='method-detaails'>+91 9940767763</span>
                 </div>
                 <div className="contact-method">
                   <span className="method-icon">✉️</span>
