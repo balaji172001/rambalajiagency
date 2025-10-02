@@ -70,7 +70,6 @@ const ContactSection = () => {
                 <div className="info-icon">✉️</div>
                 <h3>Email Us</h3>
                 <p>srirambalajiagency@gmail.com</p>
-                <p>support@srirambalaji-agency.com</p>
               </div>
             </div>
           </div>

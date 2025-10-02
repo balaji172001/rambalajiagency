@@ -40,6 +40,12 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
               Home
             </button>
             <button 
+              className={`nav-link ${currentPage === 'product' ? 'active' : ''}`}
+              onClick={() => handleNavClick('product')}
+            >
+              Product List
+            </button>
+            <button 
               className={`nav-link ${currentPage === 'about' ? 'active' : ''}`}
               onClick={() => handleNavClick('about')}
             >
@@ -57,12 +63,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             >
               Contact
             </button>
-             <button 
-              className={`nav-link ${currentPage === 'product' ? 'active' : ''}`}
-              onClick={() => handleNavClick('product')}
-            >
-              Product List
-            </button>
+             
 
           </div>
 
