@@ -1292,7 +1292,7 @@ font-size: 1.4rem;
 .product-table {
   min-width: 600px; /* or higher if needed */
 }
- .product-table {
+ .product-table , .preview-table {
           width: 100%;
           border-collapse: collapse;
         }
@@ -1302,6 +1302,13 @@ font-size: 1.4rem;
           text-align: center;
           color: #fff;
         }
+       .preview-table tr {
+    text-align: left;
+    border-bottom: solid 0.4px;
+}
+.preview-table thead{
+    background: beige;
+}
         .add-btn {
           background: #48dbfb;
           color: #fff;
@@ -1372,6 +1379,222 @@ font-size: 1.4rem;
     background: #fff;
     padding: 0 20px;
 }
+.floating-download {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+  z-index: 1000;
+  animation: bounce 1.6s infinite;
+  -webkit-animation: bounce 1.6s infinite;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-12px);
+
+}
+  60% {
+    transform: translateY(-6px);
+}
+}
+.floating-download::before {
+    content: "Price List";
+    position: absolute;
+    font-size: 1rem;
+    bottom: -35px;
+    min-width: 80px;
+    right: -15px;
+    background: #fff;
+    color: #000;
+    border-radius: 5px;
+    text-wrap-mode: nowrap;
+    padding: 5px 4px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+.qty-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.qty-btn {
+  background: #007bff;
+  color: #fff;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.qty-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.count-badge {
+  min-width: 20px;
+  text-align: center;
+}
+
+.amount-rest-box {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.total-amount-box {
+  font-size: 18px;
+  font-weight: bold;
+}
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.popup h3{
+    text-align: center;
+    margin-bottom: 12px;
+}
+.popup-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+.price-summary {
+    padding: 10px 0 0;
+}
+.cancel-btn {
+  background: #ccc;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.confirm-btn {
+  background: green;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.confirm-btn.disable-cls {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+/* Flying Dot Animation */
+.flying-item {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  text-align: center;
+  background: red;
+  pointer-events: none;
+  z-index: 9999;
+  animation: flyToCart 0.5s ease-in-out forwards;
+  -webkit-animation: flyToCart 0.5s ease-in-out forwards;
+}
+
+@keyframes flyToCart {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 50px); /* adjust to match floating cart position */
+    top: calc(100% - 80px);  /* adjust to match floating cart position */
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+
+/* Floating Cart Button */
+.floating-cart-btn {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s;
+  z-index: 1000;
+}
+
+.floating-cart-btn:hover {
+  background: #0056b3;
+}
+
+/* Badge on Cart */
+.cart-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+.original-price {
+  text-decoration: line-through;
+  color: red;
+  margin-right: 4px;
+}
+
+.offer-price {
+  color: #83fc83; /* red for offer */
+  font-weight: bold;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-menu {
@@ -1550,6 +1773,31 @@ font-size: 1.4rem;
   .info-card{
     padding: 12px 30px;
   }
+ .popup {
+    padding: 20px 10px 50px;
+    border-top-left-radius:6px;
+    border-top-right-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.popup-actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    justify-content: space-around;
+    padding: 10px 0 10px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.preview-table td , .preview-table th{
+    font-size: 0.9rem;
+  }
+  .price-summary p {
+    font-size: 0.9rem;
+  }
 }
 
 /* Additional Animations */
@@ -1601,46 +1849,4 @@ font-size: 1.4rem;
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
-}
-.floating-download {
-  position: fixed;
-  bottom: 50px;
-  right: 20px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 15px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  transition: background 0.2s ease;
-  z-index: 1000;
-  animation: bounce 1.6s infinite;
-  -webkit-animation: bounce 1.6s infinite;
-}
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-12px);
-
-}
-  60% {
-    transform: translateY(-6px);
-}
-}
-.floating-download::before {
-    content: "Price List";
-    position: absolute;
-    font-size: 1rem;
-    bottom: -35px;
-    min-width: 80px;
-    right: -15px;
-    background: #fff;
-    color: #000;
-    border-radius: 5px;
-    text-wrap-mode: nowrap;
-    padding: 5px 4px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

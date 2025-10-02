@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable"; // important to import the plugin
+
+import { FaShoppingCart } from "react-icons/fa"; // Cart icon
 
 const products = [
   { sno: 1, name: "2' Kuruvi", unit: "1 Pkt.", price: 24 },
@@ -79,70 +83,173 @@ const products = [
   { sno: 76, name: "120 Shot", unit: "1 Box", price: 4000 },
 ];
 
+const shopNumber = "916374549935";
+
 const ProductPage = () => {
-  // cart: { [sno]: count }
   const [cart, setCart] = useState({});
+  const [showPopup, setShowPopup] = useState(false);
+  const [animations, setAnimations] = useState([]); // flying dots
 
-  const handleAdd = (product) => {
-    setCart((prev) => ({
-      ...prev,
-      [product.sno]: (prev[product.sno] || 0) + 1,
-    }));
+const handleIncrease = (product, e) => {
+  setCart((prev) => ({
+    ...prev,
+    [product.sno]: (prev[product.sno] || 0) + 1,
+  }));
+
+  // create flying animation
+  const rect = e.target.getBoundingClientRect();
+  const cartBtn = document.querySelector(".floating-cart-btn").getBoundingClientRect();
+
+  const flyId = Date.now();
+  setAnimations((prev) => [
+    ...prev,
+    {
+      id: flyId,
+      x: rect.left,
+      y: rect.top,
+      targetX: cartBtn.left + cartBtn.width / 2,
+      targetY: cartBtn.top + cartBtn.height / 2,
+    },
+  ]);
+
+  setTimeout(() => {
+    setAnimations((prev) => prev.filter((a) => a.id !== flyId));
+  }, 1000);
+};
+
+  const handleDecrease = (product) => {
+    setCart((prev) => {
+      if (!prev[product.sno]) return prev;
+      const updated = { ...prev, [product.sno]: prev[product.sno] - 1 };
+      if (updated[product.sno] <= 0) delete updated[product.sno];
+      return updated;
+    });
   };
 
-  const handleReset = () => {
-    setCart({});
-  };
+  const handleReset = () => setCart({});
+const totalOriginalPrice = products.reduce(
+  (sum, item) => sum + (cart[item.sno] || 0) * item.price,
+  0
+);
 
-  const total = products.reduce(
-    (sum, item) => sum + (cart[item.sno] || 0) * item.price,
-    0
-  );
+const total = products.reduce(
+  (sum, item) => sum + (cart[item.sno] || 0) * Math.floor(item.price / 2),
+  0
+);
+
+
+  const selectedProducts = products.filter((p) => cart[p.sno]);
+  const totalItems = Object.values(cart).reduce((a, b) => a + b, 0);
+
+const confirmOrder = () => {
+  if (selectedProducts.length === 0) return;
+
+  const doc = new jsPDF();
+
+  doc.setFontSize(16);
+  doc.setTextColor(0, 102, 204);
+  doc.text("Order Details (Offer Applied)", 10, 15);
+
+  const tableData = selectedProducts.map((p, i) => {
+    const qty = cart[p.sno] || 1;
+    const originalTotal = p.price * qty;
+    const offerPrice = Math.floor(p.price / 2);
+    const offerTotal = offerPrice * qty;
+    return [i + 1, `${p.name} (${p.unit})`, qty, `Rs.${originalTotal}`, `Rs.${offerTotal}`];
+  });
+
+  let totalOfferAmount = selectedProducts.reduce((sum, p) => {
+    const qty = cart[p.sno] || 1;
+    const offerPrice = Math.floor(p.price / 2);
+    return sum + offerPrice * qty;
+  }, 0);
+
+  // ✅ Correct usage in React
+  autoTable(doc, {
+    head: [["S.No", "Item Name", "Qty", "Price", "Offer Price"]],
+    body: tableData,
+    startY: 25,
+    styles: { fontSize: 12 },
+    headStyles: { fillColor: [230, 230, 250] },
+    alternateRowStyles: { fillColor: [245, 245, 245] },
+  });
+
+  doc.setFontSize(13);
+  doc.text(`Total Amount (After Offer): Rs.${totalOfferAmount}`, 10, doc.lastAutoTable.finalY + 10);
+
+  doc.save("OrderDetails.pdf");
+
+  // WhatsApp message
+  let message = "Order Details (Offer Applied):\n\n";
+  selectedProducts.forEach((p, i) => {
+    const qty = cart[p.sno] || 1;
+    const originalTotal = p.price * qty;
+    const offerPrice = Math.floor(p.price / 2);
+    const offerTotal = offerPrice * qty;
+    message += `${i + 1}. ${p.name} (${p.unit}) x ${qty} = ₹${originalTotal} → Offer ₹${offerTotal}\n`;
+  });
+  message += `\nTotal Amount (After Offer): ₹${totalOfferAmount}`;
+
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappUrl = `https://wa.me/${shopNumber}?text=${encodedMessage}`;
+  window.open(whatsappUrl, "_blank");
+
+  setShowPopup(false);
+};
+
+
+
+
 
   return (
     <div className="container">
       <h2 className="product-head">Product Price List</h2>
+
+      {/* Product Table */}
       <div className="table-responsive">
         <table className="product-table">
-            <thead>
+          <thead>
             <tr>
-                <th>S.No.</th>
-                <th>Name of the Product</th>
-                <th>Unit</th>
-                <th>Price (₹)</th>
-                <th>Add</th>
-                <th>Count</th>
+              <th>S.No.</th>
+              <th>Name of Product</th>
+              <th>Unit</th>
+              <th>Price (₹)</th>
+              <th>Quantity</th>
             </tr>
-            </thead>
-            <tbody>
-            {products.map((product, idx) => (
-                <tr key={idx}>
-                <td>{product.sno}</td>
-                <td>{product.name}</td>
-                <td>{product.unit}</td>
-                <td>{product.price}</td>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr key={p.sno}>
+                <td>{p.sno}</td>
+                <td>{p.name}</td>
+                <td>{p.unit}</td>
                 <td>
+                    <span className="original-price">₹{p.price}</span> /{" "}
+                    <span className="offer-price">₹{Math.floor(p.price / 2)}</span>
+                </td>
+                <td>
+                  <div className="qty-box">
                     <button
-                    className={`add-btn ${cart[product.sno] ? "added" : ""}`}
-                    onClick={() => handleAdd(product)}
-                    title="Add to total"
+                      className="qty-btn"
+                      onClick={() => handleDecrease(p)}
+                      disabled={!cart[p.sno]}
                     >
-                    {cart[product.sno] ? "✓" : "+"}
+                      -
                     </button>
+                    <span className="count-badge">{cart[p.sno] || 0}</span>
+                    <button
+                      className="qty-btn"
+                      onClick={(e) => handleIncrease(p, e)}
+                    >
+                      +
+                    </button>
+                  </div>
                 </td>
-                <td>
-                    {cart[product.sno] ? (
-                    <span className="count-badge">{cart[product.sno]}</span>
-                    ) : (
-                    "-"
-                    )}
-                </td>
-                </tr>
+              </tr>
             ))}
-            </tbody>
+          </tbody>
         </table>
-    </div>
-      <div className="amount-rest-box">
+         <div className="amount-rest-box">
         <div className="total-amount-box">
             <span className="total-label">Total Amount:</span>
             <span className="total-value">₹{total}</span>
@@ -151,6 +258,76 @@ const ProductPage = () => {
             Reset
             </button>
         </div>
+      </div>
+
+      {/* Flying Animation Dots */}
+     {animations.map((a) => (
+        <div
+            key={a.id}
+            className="flying-item"
+            style={{
+            left: a.x,
+            top: a.y,
+            transform: `translate(${a.targetX - a.x}px, ${a.targetY - a.y}px)`,
+            }}
+        />
+    ))}
+
+      {/* Floating Cart Button */}
+      <button className="floating-cart-btn" onClick={() => setShowPopup(true)}>
+        <FaShoppingCart size={22} />
+        {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
+      </button>
+
+      {/* Confirmation Popup */}
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup">
+            <h3  style={{ display: selectedProducts.length === 0 ? "none" : "block" }}>Confirm Your Order</h3>
+            {selectedProducts.length ? (
+              <table className="preview-table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Unit</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {selectedProducts.map((p) => (
+                    <tr key={p.sno}>
+                      <td>{p.name}</td>
+                      <td>{p.unit}</td>
+                      <td>{cart[p.sno]}</td>
+                      <td>₹{Math.floor(p.price / 2)}</td>
+                        <td>₹{Math.floor(p.price / 2) * cart[p.sno]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p style={{height:"100px", textAlign:"center", padding:"20px 0 0"}}>No products selected</p>
+            )}
+            <div className="price-summary" style={{ display: selectedProducts.length === 0 ? "none" : "block" }}>
+                <p><span>Total Amount:</span><span>₹{totalOriginalPrice}</span></p>
+                                <p><span>Payable Amount:</span><span>₹{totalOriginalPrice / 2}</span></p>
+
+                <p><span>Discounted Amount:</span><span>₹{totalOriginalPrice / 2}</span></p>
+            </div>
+            <div className="popup-actions">
+              <button className="cancel-btn" onClick={() => setShowPopup(false)}>
+                Cancel
+              </button>
+              <button className= {`confirm-btn ${selectedProducts.length === 0 ? "disable-cls" : ""}`}  onClick={confirmOrder}>
+                Confirm Order & Send WhatsApp
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 };
