@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable"; // important to import the plugin
 
@@ -197,7 +197,13 @@ const confirmOrder = () => {
   setShowPopup(false);
 };
 
-
+useEffect(() => {
+  if (showPopup) {
+    document.body.style.overflow = "hidden"; // disable scroll
+  } else {
+    document.body.style.overflow = ""; // enable scroll back
+  }
+}, [showPopup]);
 
 
 
@@ -274,7 +280,7 @@ const confirmOrder = () => {
     ))}
 
       {/* Floating Cart Button */}
-      <button className="floating-cart-btn" onClick={() => setShowPopup(true)}>
+      <button className="floating-cart-btn" onClick={() => setShowPopup(true)} >
         <FaShoppingCart size={22} />
         {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
       </button>
