@@ -73,7 +73,7 @@ const products = [
   { sno: 66, name: "Peacock", unit: "1 Box", price: 550 },
   { sno: 67, name: '2" Fancy', unit: "1 Box", price: 300 },
   { sno: 68, name: '3" Fancy', unit: "1 Box", price: 600 },
-  { sno: 69, name: '2¼ fancy', unit: "3 pieces", price: 800 },
+  { sno: 69, name: '2¼ Fancy', unit: "3 pieces", price: 800 },
   { sno: 70, name: '4" Fancy', unit: "1 Box", price: 800 },
   { sno: 71, name: '3½ Fancy double ball', unit: "1 Box", price: 1100 },
   { sno: 72, name: "25 Shot Crackling Long", unit: "1 Box", price: 450 },
