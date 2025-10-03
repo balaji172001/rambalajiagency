@@ -23,7 +23,7 @@ const Contact = () => {
           <div className="location-info location-map-flex">
             <div className="location-card">
               <h3>📍 Our Address</h3>
-              <p><strong>Sri rambalaji Agency</strong></p>
+              <p><strong>Sri Rambalaji Agency</strong></p>
               <p>329-H/1, Sriviliputtur to Alangulam Road</p>
               <p>Sri Venkateshwara Nagar</p>
               <p>Pilliyarkulam (Post)</p>
@@ -47,7 +47,7 @@ const Contact = () => {
             </div>
             <div className="location-map-embed">
               <iframe
-                title="Sri rambalaji Agency Location"
+                title="Sri Rambalaji Agency Location"
                 src="https://www.google.com/maps?q=329-H/1,+Sriviliputtur+to+Alangulam+Road,+Sriviliputtur,+Tamil+Nadu&output=embed"
                 width="100%"
                 height="300"

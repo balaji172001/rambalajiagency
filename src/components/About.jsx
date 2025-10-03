@@ -5,7 +5,7 @@ const About = () => {
     <section id="about" className="about">
       <div className="container">
         <div className="about-header">
-          <h2 className="section-title">About Sri rambalaji Agency</h2>
+          <h2 className="section-title">About Sri Rambalaji Agency</h2>
           <p className="section-subtitle">
             Empowering businesses with innovative solutions and strategic insights
           </p>
@@ -15,7 +15,7 @@ const About = () => {
           <div className="about-text">
             <h3>Our Mission</h3>
             <p>
-              At Sri rambalaji Agency, we believe in transforming businesses through strategic 
+              At Sri Rambalaji Agency, we believe in transforming businesses through strategic 
               planning, innovative solutions, and dedicated partnership. With years of experience 
               across diverse industries, we provide the expertise and support your business needs to thrive.
             </p>
