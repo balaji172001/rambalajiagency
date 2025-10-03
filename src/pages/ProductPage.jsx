@@ -73,16 +73,17 @@ const products = [
   { sno: 66, name: "Peacock", unit: "1 Box", price: 550 },
   { sno: 67, name: '2" Fancy', unit: "1 Box", price: 300 },
   { sno: 68, name: '3" Fancy', unit: "1 Box", price: 600 },
-  { sno: 69, name: '2½" Fancy', unit: "1 Box", price: 800 },
+  { sno: 69, name: '2¼ fancy', unit: "3 pieces", price: 800 },
   { sno: 70, name: '4" Fancy', unit: "1 Box", price: 800 },
-  { sno: 71, name: '3½" Fancy', unit: "1 Box", price: 1100 },
+  { sno: 71, name: '3½ Fancy double ball', unit: "1 Box", price: 1100 },
   { sno: 72, name: "25 Shot Crackling Long", unit: "1 Box", price: 450 },
   { sno: 73, name: "25 Shot", unit: "1 Box", price: 900 },
   { sno: 74, name: "30 Shot", unit: "1 Box", price: 1000 },
   { sno: 75, name: "60 Shot", unit: "1 Box", price: 2000 },
   { sno: 76, name: "120 Shot", unit: "1 Box", price: 4000 },
   { sno: 77, name: "Gun", unit: "1 Box", price: 450 },
-  { sno: 78, name: "Tim Tim", unit: "1 Box", price: 550 }
+  { sno: 78, name: "Tim Tim", unit: "1 Box", price: 550 },
+  { sno: 79, name: "Cricket ball & bat", unit: "1 Piece", price: 600 }
 ];
 
 const shopNumber = "916374549935";
