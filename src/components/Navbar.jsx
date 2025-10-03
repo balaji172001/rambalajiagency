@@ -31,7 +31,7 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo">
-            <h2>Sri rambalaji Agency</h2>
+            <h2>Sri Rambalaji Agency</h2>
             <span className="tagline">Your Trusted Partner</span>
           </div>
 

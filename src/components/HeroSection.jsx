@@ -51,7 +51,7 @@ const HeroSection = () => {
       <div className="hero-container">
         <div className="hero-content">
           <h1 className="hero-title">
-            Welcome to <span className="brand-name">Sri rambalaji Agency</span>
+            Welcome to <span className="brand-name">Sri Rambalaji Agency</span>
           </h1>
           <p className="hero-subtitle">
             Premium Services

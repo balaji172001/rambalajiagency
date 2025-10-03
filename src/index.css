@@ -1801,7 +1801,9 @@ html {
     font-size: 26px;
   }
   .banner-image {
-    height: 185px;
+    width: 100%;
+    aspect-ratio: 3780 / 1890;
+    height: unset;
   }
   .diwali-title {
     font-size: 26px;

@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="container">
           <div className="footer-content">
             <div className="footer-section">
-              <h3>Sri rambalaji Agency</h3>
+              <h3>Sri Rambalaji Agency</h3>
               <p>Your trusted partner for premium business solutions and services.</p>
               <div className="discount-highlight">
                 <span>🎉 50% OFF on all services! 🎉</span>
@@ -52,7 +52,7 @@ const Footer = () => {
       
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; 2024 Sri rambalaji Agency. All rights reserved.</p>
+          <p>&copy; 2024 Sri Rambalaji Agency. All rights reserved.</p>
           <p>🎊 Special 50% Discount Offer - Limited Time Only! 🎊</p>
         </div>
       </div>

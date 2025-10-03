@@ -6,7 +6,7 @@ const About = () => {
     <div className="about-page">
       <div className="page-header">
         <div className="container">
-          <h1>🌟 About Sri rambalaji Agency 🌟</h1>
+          <h1>🌟 About Sri Rambalaji Agency 🌟</h1>
           <p>Your trusted partner for premium business solutions</p>
           <div className="discount-banner-small">
             <span>🎉 50% OFF on all services! 🎉</span>
@@ -20,7 +20,7 @@ const About = () => {
             <div className="about-text">
               <h2>Our Story</h2>
               <p>
-                Sri rambalaji Agency has been serving businesses with dedication and excellence. 
+                Sri Rambalaji Agency has been serving businesses with dedication and excellence. 
                 We specialize in providing comprehensive business solutions that help our clients 
                 achieve their goals and grow their ventures.
               </p>
