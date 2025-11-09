@@ -841,6 +841,7 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  padding: 0 20px;
 }
 
 .celebration-content {
@@ -1456,13 +1457,53 @@ font-size: 1.4rem;
     margin-bottom: 12px;
 }
 .popup-actions {
-  margin-top: 20px;
+  margin-top: 5px;
   display: flex;
   justify-content: space-around;
   gap: 10px;
 }
+.discounted-amount {
+    color: green;
+}
 .price-summary {
     padding: 10px 0 0;
+}
+.qr-section{
+  text-align: center;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease;
+  -webkit-animation: fadeIn 0.3s ease;
+}
+.qr-section img{
+    aspect-ratio: 686 / 780;
+    width: 100%;
+    max-width: 200px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.qr-section p{
+  margin-top: 5px;
+  font-size: 14px;
+  color: #666;
+}
+.qr-code-image{
+  text-align: center;
+  cursor: pointer;
+  color: #007bff;
+  margin-top: 15px;
+}
+.price-summary p{
+  display: flex;
+  justify-content: space-between;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.note-con-order{
+  text-align: center;
+  font-size: 12px;
+  padding-top: 10px;
 }
 .cancel-btn {
   background: #ccc;

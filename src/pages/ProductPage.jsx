@@ -92,6 +92,7 @@ const ProductPage = () => {
   const [cart, setCart] = useState({});
   const [showPopup, setShowPopup] = useState(false);
   const [animations, setAnimations] = useState([]); // flying dots
+  const [showQR, setShowQR] = useState(false);
 
 const handleIncrease = (product, e) => {
   setCart((prev) => ({
@@ -329,8 +330,22 @@ useEffect(() => {
                 <p><span>Total Amount:</span><span>₹{totalOriginalPrice}</span></p>
                                 <p><span>Payable Amount:</span><span>₹{totalOriginalPrice / 2}</span></p>
 
-                <p><span>Discounted Amount:</span><span>₹{totalOriginalPrice / 2}</span></p>
+                <p><span>Discounted Amount:</span><span className="discounted-amount">₹{totalOriginalPrice / 2}</span></p>
             </div>
+            <p style={{ display: selectedProducts.length === 0 ? "none" : "block" }} className="qr-code-image qrclik_expand" onClick={() => setShowQR((prev) => !prev)}>
+              {showQR ? "Hide QR Code Payment Option" : "Show QR Code Payment Option"}
+            </p>
+            {showQR && (
+        <div className="qr-section">
+                    <p>Scan to Pay via UPI</p>
+
+          <img
+            src="/Images/QR code/QR_code_image.png" // replace with your QR code image path
+            alt="QR Code"
+          />
+        </div>
+      )}
+      <p className="note-con-order" style={{ display: selectedProducts.length === 0 ? "none" : "block" }}>Note: Before Online Payment, please confirm your order details.</p>
             <div className="popup-actions">
               <button className="cancel-btn" onClick={() => setShowPopup(false)}>
                 Cancel
